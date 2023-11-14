@@ -1,0 +1,77 @@
+---
+defaultImage: false
+global:
+  imageRegistry: ""
+image:
+  repository: "bitnami/mariadb"
+  tag: "10.1.46-debian-10-r56"
+metrics:
+  image:
+    repository: "bitnami/mysqld-exporter"
+    tag: "0.12.1-debian-10-r42"
+securityContext:
+  enabled: "true"
+  fsGroup: 0
+  runAsUser: 0
+db:
+  user: "root"
+  password: "password"
+  name: "helloworld"
+master:
+  resources:
+    requests:
+      memory: "2G"
+      cpu: "1000m"
+  persistence:
+    enabled: true
+    size: "4Gi"
+    storageClass: ""
+    existingClaim: ""
+  config: |
+    [mysqld]
+    skip-name-resolve
+    explicit_defaults_for_timestamp
+    basedir=/opt/bitnami/mariadb
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    tmpdir=/opt/bitnami/mariadb/tmp
+    bind-address=0.0.0.0
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+    log-error=/opt/bitnami/mariadb/logs/mysqld.log
+    character-set-server=UTF8
+    collation-server=utf8_general_ci
+    max_allowed_packet=128M
+    read_buffer_size=4M
+    innodb_buffer_pool_size=512M
+    slow_query_log=1
+    long_query_time=10
+    expire-logs-days = 8
+    query_cache_type=ON
+    query_cache_size=134217728
+    
+    [client]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    default-character-set=UTF8
+    plugin_dir=/opt/bitnami/mariadb/plugin
+    
+    [manager]
+    port=3306
+    socket=/opt/bitnami/mariadb/tmp/mysql.sock
+    pid-file=/opt/bitnami/mariadb/tmp/mysqld.pid
+replication:
+  enabled: true
+slave:
+  replicas: "1"
+  persistence:
+    enabled: true
+    size: "4Gi"
+    storageClass: ""
+  readinessProbe:
+    initialDelaySeconds: 60
+service:
+  type: "NodePort"
+  nodePort:
+    master: ""
+    slave: ""
