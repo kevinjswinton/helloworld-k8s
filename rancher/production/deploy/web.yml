@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: kevinjswinton/helloworld:d5ff130
+          image: kevinjswinton/helloworld:ce3b301
           ports:
           - containerPort: 80
       imagePullPolicy: Always
