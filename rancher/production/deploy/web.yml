@@ -20,4 +20,3 @@ spec:
           image: kevinjswinton/helloworld:b7ee53e
           ports:
           - containerPort: 80
-      imagePullPolicy: Always
