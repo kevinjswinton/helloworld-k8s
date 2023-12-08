@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: web
-          image: kevinjswinton/helloworld:ddabcb0
+          image: kevinjswinton/helloworld:2ecce73
           ports:
           - containerPort: 80
