@@ -20,3 +20,5 @@ spec:
           image: docker.io/kevinjswinton/tlsdemo:28ac135
           ports:
           - containerPort: 80
+      imagePullSecrets:
+        - name: docker.io
