@@ -7,7 +7,7 @@
 
 # construct the base container image name
 dockerHubAct="kevinjswinton"
-dockerHubRpo="helloworld"
+dockerHubRpo="tlsdemo"
 dockerHubImg="web-base"
 imgDatestamp=$(date '+%Y%m%d')
 dockerHubImg=$dockerHubAct/$dockerHubRpo:$dockerHubImg-$imgDatestamp
