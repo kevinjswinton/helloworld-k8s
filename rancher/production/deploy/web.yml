@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: web
-          image: kevinjswinton/tlsdemo:28ac135
+          image: docker.io/kevinjswinton/tlsdemo:28ac135
           ports:
           - containerPort: 80
